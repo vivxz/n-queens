@@ -78,13 +78,29 @@
     // --------------------------------------------------------------
     //
     // test if a specific row on this board contains a conflict
-    hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+    // [ [row index : 0],
+    //   [row index : 1] 
+    // ]
+    hasRowConflictAt: function(rowIndex) {  
+      var row = this.get(rowIndex); // give you an array
+      var count = 0; // count the number of rooks/queens
+      for (var i = 0; i < row.length; i++) {
+        if (row[i]){
+          count++;
+        }
+      }
+      return (count > 1); 
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      var chess = this.rows();
+      for (var i = 0; i < chess.length; i++) {
+        if (this.hasRowConflictAt(i)) {
+          return true;
+        }
+      }
+    return false;
     },
 
 
