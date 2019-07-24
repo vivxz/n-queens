@@ -109,13 +109,34 @@
     // --------------------------------------------------------------
     //
     // test if a specific column on this board contains a conflict
+/* ** Strategy ** 
+Let's get the whole chessboard in a variable. Iterate through each
+row, and if that row has something in the column index (colIndex), 
+increment count by 1. 
+*/
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+      var chess = this.rows();
+      var count = 0;
+      for (var i = 0; i < chess.length; i++) {
+        if (chess[i][colIndex]) {
+          count++;
+        }
+      }
+      return (count > 1);
     },
 
     // test if any columns on this board contain conflicts
+    /* 
+      Start with rows, iterate through the columns 
+    */
     hasAnyColConflicts: function() {
-      return false; // fixme
+      var chess = this.rows();
+      for (var i = 0; i < chess.length; i++){
+          if (this.hasColConflictAt(i)){
+            return true;
+        }
+      }
+      return false;
     },
 
 
