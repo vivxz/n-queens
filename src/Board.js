@@ -94,8 +94,8 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      var chess = this.rows();
-      for (var i = 0; i < chess.length; i++) {
+      var board = this.rows();
+      for (var i = 0; i < board.length; i++) {
         if (this.hasRowConflictAt(i)) {
           return true;
         }
@@ -115,10 +115,10 @@ row, and if that row has something in the column index (colIndex),
 increment count by 1. 
 */
     hasColConflictAt: function(colIndex) {
-      var chess = this.rows();
+      var board = this.rows();
       var count = 0;
-      for (var i = 0; i < chess.length; i++) {
-        if (chess[i][colIndex]) {
+      for (var i = 0; i < board.length; i++) {
+        if (board[i][colIndex]) {
           count++;
         }
       }
@@ -130,8 +130,8 @@ increment count by 1.
       Start with rows, iterate through the columns 
     */
     hasAnyColConflicts: function() {
-      var chess = this.rows();
-      for (var i = 0; i < chess.length; i++){
+      var board = this.rows();
+      for (var i = 0; i < board.length; i++){
           if (this.hasColConflictAt(i)){
             return true;
         }
@@ -146,12 +146,34 @@ increment count by 1.
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      var board = this.rows();
+      var index = majorDiagonalColumnIndexAtFirstRow;
+      var count = 0;
+      for (var i = 0; i < board.length; i++){
+        if (board[i][index]){ 
+          count++;
+        }
+        // if (index > board.length){
+          
+        // }
+        index++;
+      }
+      return (count > 1);
     },
 
     // test if any major diagonals on this board contain conflicts
+    /*
+     Use for loop to recursively call hasMajorDiagonalConflictAt function
+     return true if it's true, else false
+    */
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      var board = this.rows();
+      for (var i = -(board.length); i < board.length; i++){
+        if(this.hasMajorDiagonalConflictAt(i)){
+          return true;
+        }
+      }
+      return false;
     },
 
 
