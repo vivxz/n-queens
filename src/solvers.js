@@ -13,10 +13,23 @@
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
 
+/* ** Strategy ** 
+We need to make an array which is a row in our chessboard. Everytime we iterate through the
+for loop, either 0 or 1 is pushed through. If index i is equal to 0 or 1. (When to push 1??)
 
 
+*/
 window.findNRooksSolution = function(n) {
-  var solution = undefined; //fixme
+  var solution = [];
+
+  for (var i = 0; i < n; i++) {
+    var row = [];
+    for(var j = 0; j < n; j++){
+      row.push(0);
+    }
+    row[i] = 1;
+    solution.push(row);
+  }
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
