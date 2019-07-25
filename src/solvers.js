@@ -16,12 +16,9 @@
 /* ** Strategy ** 
 We need to make an array which is a row in our chessboard. Everytime we iterate through the
 for loop, either 0 or 1 is pushed through. If index i is equal to 0 or 1. (When to push 1??)
-
-
 */
 window.findNRooksSolution = function(n) {
   var solution = [];
-
   for (var i = 0; i < n; i++) {
     var row = [];
     for(var j = 0; j < n; j++){
@@ -30,14 +27,27 @@ window.findNRooksSolution = function(n) {
     row[i] = 1;
     solution.push(row);
   }
-
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
 };
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
+// Input: An integer
+// Output: Number of nxn chessboards with n rooks placed such that none can attack each other
+// Constraints: Chessboards from 1x1 to 8x8 ; there isn't actually a constraints ... 
+// Edge Cases: If they don't put in a number from 1 through 8
+
+/* ** Strategy ** 
+create a number variable to equal to 1
+we will eventually have to multiply it in an increment matter
+THE ANSWER IS N! --- using recursion or for loop
+
+*/
 window.countNRooksSolutions = function(n) {
-  var solutionCount = undefined; //fixme
+  var solutionCount = 1;
+  for (var i = 1; i <= n; i++){
+    solutionCount *= i;
+  } 
 
   console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
