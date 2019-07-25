@@ -195,12 +195,12 @@ increment count by 1.
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
       var board = this.rows();
-      for (var i = 0; i < (board.length - 1); i++) { // FIX ME
+      for (var i = (board.length - 1) * 2; i >= 0 ; i--) { // FIX ME
         if(this.hasMinorDiagonalConflictAt(i)) {
           return true;
         }
       }
-    return
+    return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
