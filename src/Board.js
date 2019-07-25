@@ -153,9 +153,6 @@ increment count by 1.
         if (board[i][index]){ 
           count++;
         }
-        // if (index > board.length){
-          
-        // }
         index++;
       }
       return (count > 1);
@@ -183,12 +180,27 @@ increment count by 1.
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      var board = this.rows();
+      var index = minorDiagonalColumnIndexAtFirstRow;
+      var count = 0;
+      for (var i = 0; i < board.length; i++) {
+        if (board[i][index]) {
+          count++;
+        }
+        index--;
+      }
+      return (count > 1);
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      var board = this.rows();
+      for (var i = 0; i < (board.length - 1); i++) { // FIX ME
+        if(this.hasMinorDiagonalConflictAt(i)) {
+          return true;
+        }
+      }
+    return
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
