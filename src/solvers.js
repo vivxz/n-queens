@@ -18,6 +18,26 @@ We need to make an array which is a row in our chessboard. Everytime we iterate 
 for loop, either 0 or 1 is pushed through. If index i is equal to 0 or 1. (When to push 1??)
 */
 window.findNRooksSolution = function(n) {
+  /* 
+  var board = new Board({ n });
+  var solution;
+
+  var findSolution = (row = 0) => {
+    if (row < n && !solution) {
+      for (var col = 0; col < n; col++) {
+        board.togglePiece(row, col);
+        //check next row and repeat
+        if (!board.hasAnyRooksConflict()) { // change to hasAnyQueensConflicts
+          findSolution(row + 1);
+        }
+        board.togglePiece(row, col);
+      }
+    } else if (row === n) {
+      solution = board.rows().slice().map(row => row.slice());
+    }
+  }
+  return solution || board.rows();
+  */
   var solution = [];
   for (var i = 0; i < n; i++) {
     var row = [];
@@ -55,6 +75,27 @@ window.countNRooksSolutions = function(n) {
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
 window.findNQueensSolution = function(n) {
+
+    /* 
+  var board = new Board({ n });
+  var solution;
+
+  var findSolution = (row = 0) => {
+    if (row < n && !solution) {
+      for (var col = 0; col < n; col++) {
+        board.togglePiece(row, col);
+        //check next row and repeat
+        if (!board.hasAnyRooksConflict()) { // change to hasAnyQueensConflicts
+          findSolution(row + 1);
+        }
+        board.togglePiece(row, col);
+      }
+    } else if (row === n) {
+      solution = board.rows().slice().map(row => row.slice());
+    }
+  }
+  return solution || board.rows();
+  */
   var solution = undefined; //fixme
 
   console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
